@@ -8,7 +8,7 @@ const string ESC_RESET_CURSOR = "\e[1;1H";
 class Render {
     string buffer;
   public:
-    Render(string);
+    Render(string str) { buffer = str; }
 
     int perform() {
       cout << ESC_CLEAR_SCREEN;
@@ -18,13 +18,8 @@ class Render {
     }
 };
 
-Render::Render(string str) {
-  buffer = str;
-}
-
 int main() {
   Render render("Hello world!\n");
   render.perform();
   return 0;
 }
-
