@@ -5,6 +5,17 @@ using namespace std;
 const string ESC_CLEAR_SCREEN = "\e[2J";
 const string ESC_RESET_CURSOR = "\e[1;1H";
 
+class Buffer {
+  public:
+    Buffer(string str) { content = str; }
+
+    string content;
+
+    void clear() {
+      content = "";
+    }
+};
+
 class Render {
     string buffer;
   public:
