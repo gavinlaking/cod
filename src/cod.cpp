@@ -10,11 +10,10 @@ class Render {
   public:
     Render(string str) { buffer = str; }
 
-    int perform() {
+    void perform() {
       cout << ESC_CLEAR_SCREEN;
       cout << ESC_RESET_CURSOR;
       cout << buffer;
-      return 0;
     }
 };
 
