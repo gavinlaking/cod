@@ -91,6 +91,11 @@ class Terminal {
     int ty;
     int txn;
     int tyn;
+
+    void inspect() {
+      cout << " tx: " << tx << " txn: " << txn;
+      cout << " ty: " << ty << " tyn: " << tyn;
+    }
 };
 
 int main() {
