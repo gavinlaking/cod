@@ -102,6 +102,14 @@ int main() {
   Render render("Hello world!\n");
   render.perform();
 
+  Terminal* terminal = new Terminal();
+  terminal->inspect();
+  cout << endl;
+
+  Cursor* cursor = new Cursor();
+  cursor->inspect();
+  cout << endl;
+
   int i = 0;
   while(i < 20) {
     cout << i << endl;
