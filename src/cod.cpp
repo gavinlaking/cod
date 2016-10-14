@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unistd.h>
 
 using namespace std;
 
@@ -98,9 +99,14 @@ class Terminal {
     }
 };
 
-int main() {
+int main(int argc, char** argv) {
   Render render("Hello world!\n");
   render.perform();
+
+  cout << "Have " << argc << " arguments:" << endl;
+  for (int i = 0; i < argc; ++i) {
+    cout << argv[i] << endl;
+  }
 
   Terminal* terminal = new Terminal();
   terminal->inspect();
@@ -114,6 +120,7 @@ int main() {
   while(i < 20) {
     cout << i << endl;
     i++;
+    sleep(0.5);
   }
 
   return 0;
