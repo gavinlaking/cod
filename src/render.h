@@ -2,19 +2,13 @@
 #define __RENDER_H_INCLUDED__
 
 class Render {
-    string buffer;
+    std::string buffer;
   public:
-    Render(string str)
-    {
+    Render(std::string str) {
       buffer = str;
     }
 
-    void perform()
-    {
-      cout << ESC_CLEAR_SCREEN;
-      cout << ESC_RESET_CURSOR;
-      cout << buffer;
-    }
+    void perform();
 };
 
 #endif

@@ -7,8 +7,7 @@
 
 using namespace std;
 
-int Keypress::getch(void)
-{
+int Keypress::getch(void) {
   struct termios oldt, newt;
 
   tcgetattr(STDIN_FILENO, &oldt);
@@ -26,8 +25,9 @@ int Keypress::getch(void)
 }
 
 void Keypress::inspect() {
-	cout << (char)this->key << " ";
-  cout << dec << uppercase << "Dec: " << this->key << " ";
- 	cout << hex << uppercase << "Hex: 0x" << this->key << " ";
-	cout << oct << uppercase << "Oct: 0"  << this->key;
+	std::cout << (char)this->key << " ";
+  std::cout << dec << uppercase << "Dec: "   << this->key << " ";
+ 	std::cout << hex << uppercase << "Hex: 0x" << this->key << " ";
+	std::cout << oct << uppercase << "Oct: 0"  << this->key;
+  std::cout << std::endl;
 }
