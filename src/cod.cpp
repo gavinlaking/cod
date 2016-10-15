@@ -3,6 +3,7 @@
 #include <unistd.h>
 
 #include "cursor.h"
+#include "terminal.h"
 
 using namespace std;
 
@@ -29,26 +30,6 @@ class Render {
       cout << ESC_CLEAR_SCREEN;
       cout << ESC_RESET_CURSOR;
       cout << buffer;
-    }
-};
-
-class Terminal {
-  public:
-    Terminal() {
-      tx = 1;
-      ty = 1;
-      txn = 80;
-      tyn = 25;
-    }
-
-    int tx;
-    int ty;
-    int txn;
-    int tyn;
-
-    void inspect() {
-      cout << " tx: " << tx << " txn: " << txn;
-      cout << " ty: " << ty << " tyn: " << tyn;
     }
 };
 
