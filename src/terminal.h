@@ -6,7 +6,7 @@ class Terminal {
     Terminal() {
       tx = 1;
       ty = 1;
-      txn = 80;
+      txn = 90;
       tyn = 25;
     }
 
@@ -14,7 +14,7 @@ class Terminal {
     int ty;
     int txn;
     int tyn;
-
+    
     void inspect();
 };
 

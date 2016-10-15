@@ -3,33 +3,54 @@
 
 using namespace std;
 
-void Cursor::down() {
+void Cursor::down()
+{
   cy++;
 }
-void Cursor::inspect() {
-  cout << " cx: " << cx << " cy: " << cy << endl;
+
+void Cursor::inspect()
+{
+  cout << " cx: " << cx << " cy: " << cy;
 }
-void Cursor::left() {
-  if (cx <= 0) {
+
+void Cursor::left()
+{
+  if (cx <= 0)
+  {
     cx = 1;
-  } else if (cx - 1 < 1) {
+  }
+  else if (cx - 1 < 1)
+  {
     cx = 1;
-  } else {
+  }
+  else
+  {
     cx--;
   }
 }
-void Cursor::render() {
+
+void Cursor::render()
+{
   cout << "\e[" << cy << ";" << cx << "H";
 }
-void Cursor::right() {
+
+void Cursor::right()
+{
   cx++;
 }
-void Cursor::up() {
-  if (cy <= 0) {
+
+void Cursor::up()
+{
+  if (cy <= 0)
+  {
     cy = 1;
-  } else if (cy - 1 < 1) {
+  }
+  else if (cy - 1 < 1)
+  {
     cy = 1;
-  } else {
+  }
+  else
+  {
     cy--;
   }
 }

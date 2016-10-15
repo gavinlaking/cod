@@ -1,5 +1,9 @@
 Target = cod
-Sources = ./src/cursor.cpp ./src/terminal.cpp ./src/cod.cpp
+Sources = ./src/cursor.cpp \
+					./src/keypress.cpp \
+					./src/terminal.cpp \
+					./src/cod.cpp
+
 CXX = g++
 CXXFLAGS = -O3
 DESTPATH = ./bin/$(Target)
