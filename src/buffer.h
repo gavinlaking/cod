@@ -12,9 +12,7 @@ class Buffer {
 
     std::string content;
 
-    void clear() {
-      content = "";
-    }
+    void clear();
 };
 
 #endif
