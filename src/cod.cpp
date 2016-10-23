@@ -7,6 +7,7 @@
 #include "keypress.h"
 #include "options.h"
 #include "render.h"
+#include "status.h"
 #include "terminal.h"
 
 int main(int argc, char** argv) {
@@ -22,11 +23,19 @@ int main(int argc, char** argv) {
   Cursor* cursor = new Cursor();
   cursor->inspect();
 
+  Status* status = new Status();
+
   int i = 0;
   while(i < 20) {
     Keypress* keypress = new Keypress();
     int key = keypress->getch();
-    std::cout << (char)key;
+
+    keypress->inspect();
+
+    std::cout << (char)key << std::endl;
+    
+    status->update();
+
     i++;
   }
 
