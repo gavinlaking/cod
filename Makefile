@@ -2,6 +2,7 @@ Target = cod
 Sources = ./src/buffer.cpp \
 					./src/cursor.cpp \
 					./src/keypress.cpp \
+					./src/options.cpp \
 					./src/render.cpp \
 					./src/terminal.cpp \
 					./src/cod.cpp
