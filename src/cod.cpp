@@ -5,35 +5,9 @@
 #include "buffer.h"
 #include "cursor.h"
 #include "keypress.h"
+#include "options.h"
 #include "render.h"
 #include "terminal.h"
-
-class Options {
-  public:
-    Options(int argc, char** argv) {
-      count = argc;
-      values = argv;
-    }
-
-    int count;
-    char** values;
-
-    void inspect() {
-      std::cout << "argc: " << count << " argv: [";
-      for (int i = 0; i < count; i++)
-      {
-        if (i == count - 1)
-        {
-          std::cout << values[i];
-        }
-        else
-        {
-          std::cout << values[i] << (", ");
-        }
-      }
-      std::cout << "]";
-    }
-};
 
 int main(int argc, char** argv) {
   Render* render = new Render("Hello world!\n");
