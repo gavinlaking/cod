@@ -15,7 +15,9 @@ class Terminal {
     int txn;
     int tyn;
     
+    int height();
     void inspect();
+    int width();
 };
 
 #endif
