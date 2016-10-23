@@ -5,8 +5,6 @@
 
 #include "keypress.h"
 
-using namespace std;
-
 int Keypress::getch(void) {
   struct termios oldt, newt;
 
@@ -25,9 +23,9 @@ int Keypress::getch(void) {
 }
 
 void Keypress::inspect() {
-	std::cout << (char)this->key << " ";
-  std::cout << dec << uppercase << "Dec: "   << this->key << " ";
- 	std::cout << hex << uppercase << "Hex: 0x" << this->key << " ";
-	std::cout << oct << uppercase << "Oct: 0"  << this->key;
+  std::cout << (char)this->key << " ";
+  std::cout << std::dec << std::uppercase << "Dec: "   << this->key << " ";
+  std::cout << std::hex << std::uppercase << "Hex: 0x" << this->key << " ";
+  std::cout << std::oct << std::uppercase << "Oct: 0"  << this->key;
   std::cout << std::endl;
 }
