@@ -7,8 +7,15 @@ class Render {
     Render(std::string str) {
       buffer = str;
     }
+    Render() {
+      buffer = "";
+    }
 
-    void perform();
+    // clear the screen and reset the cursor to 1, 1.
+    void clear();
+
+    // write the buffer to the screen.
+    void write();
 };
 
 #endif

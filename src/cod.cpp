@@ -10,25 +10,17 @@
 #include "terminal.h"
 
 int main(int argc, char** argv) {
-  Render* render = new Render("Hello world!\n");
-  render->perform();
-
-  Options* options = new Options(argc, argv);
-  options->inspect();
-
   Terminal* terminal = new Terminal();
-  terminal->inspect();
+  terminal->open();
 
-  Cursor* cursor = new Cursor();
-  cursor->inspect();
+  Keypress* keypress = new Keypress();
 
   int i = 0;
   while(i < 20) {
-    Keypress* keypress = new Keypress();
     int key = keypress->getch();
     std::cout << (char)key;
     i++;
   }
 
-  return 0;
+  terminal->close();
 }

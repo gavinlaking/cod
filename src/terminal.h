@@ -2,11 +2,13 @@
 #define __TERMINAL_H_INCLUDED__
 
 class Terminal {
+  void init();
+
   public:
     Terminal() {
       tx = 1;
       ty = 1;
-      txn = 90;
+      txn = 80;
       tyn = 25;
     }
 
@@ -15,8 +17,10 @@ class Terminal {
     int txn;
     int tyn;
     
+    int close();
     int height();
     void inspect();
+    void open();
     int width();
 };
 

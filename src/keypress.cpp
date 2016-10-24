@@ -11,12 +11,15 @@ int Keypress::getch(void) {
   tcgetattr(STDIN_FILENO, &oldt);
 
   newt = oldt;
+
+  // and don't echo the keypress.
   newt.c_lflag &= ~(ICANON | ECHO);
-  
+
   tcsetattr(STDIN_FILENO, TCSANOW, &newt);
-  
+
   this->key = getchar();
-  
+  if (this->key == (char)27) {}
+
   tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
 
   return this->key;
