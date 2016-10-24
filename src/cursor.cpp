@@ -12,13 +12,16 @@ void Cursor::inspect() {
 }
 
 void Cursor::left() {
-  if (cx <= 0) {
-    cx = 1;
-  } else if (cx - 1 < 1) {
+  if (cx <= 0 || cx - 1 < 1) {
     cx = 1;
   } else {
     cx--;
   }
+}
+
+void Cursor::restore() {
+  cx = tmp_cx;
+  cy = tmp_cy;
 }
 
 void Cursor::render() {
@@ -29,10 +32,13 @@ void Cursor::right() {
   cx++;
 }
 
+void Cursor::store() {
+  tmp_cx = cx;
+  tmp_cy = cy;
+}
+
 void Cursor::up() {
-  if (cy <= 0) {
-    cy = 1;
-  } else if (cy - 1 < 1) {
+  if (cy <= 0 || cy - 1 < 1) {
     cy = 1;
   } else {
     cy--;
