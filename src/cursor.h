@@ -7,11 +7,11 @@ class Cursor {
 
   public:
     Cursor(int n, int m) {
-      cy = n;
-      cx = m;
+      cy = (n < 1) ? 1 : n;
+      cx = (m < 1) ? 1 : m;
     }
     Cursor(int n) {
-      cy = n;
+      cy = (n < 1) ? 1 : n;
       cx = 1;
     }
     Cursor() {
@@ -29,6 +29,7 @@ class Cursor {
 
     // Moves the cursor left by one character.
     void left();
+
     void render();
     void restore();
 
