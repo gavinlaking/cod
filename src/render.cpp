@@ -27,26 +27,6 @@ const std::string ESC_FG_DEFAULT = "\e[39m";
 void Render::clear() {
   std::cout << ESC_CLEAR_SCREEN;
   std::cout << ESC_RESET_CURSOR;
-
-  // std::cout << ESC_BG_BLACK   << "Black"   << ESC_BG_DEFAULT;
-  // std::cout << ESC_BG_RED     << "Red"     << ESC_BG_DEFAULT;
-  // std::cout << ESC_BG_GREEN   << "Green"   << ESC_BG_DEFAULT;
-  // std::cout << ESC_BG_YELLOW  << "Yellow"  << ESC_BG_DEFAULT;
-  // std::cout << ESC_BG_BLUE    << "Blue"    << ESC_BG_DEFAULT;
-  // std::cout << ESC_BG_MAGENTA << "Magenta" << ESC_BG_DEFAULT;
-  // std::cout << ESC_BG_CYAN    << "Cyan"    << ESC_BG_DEFAULT;
-  // std::cout << ESC_BG_WHITE   << "White"   << ESC_BG_DEFAULT;
-  // std::cout << ESC_BG_DEFAULT << "Default" << ESC_BG_DEFAULT;
-
-  // std::cout << ESC_FG_BLACK   << "Black"   << ESC_FG_DEFAULT;
-  // std::cout << ESC_FG_RED     << "Red"     << ESC_FG_DEFAULT;
-  // std::cout << ESC_FG_GREEN   << "Green"   << ESC_FG_DEFAULT;
-  // std::cout << ESC_FG_YELLOW  << "Yellow"  << ESC_FG_DEFAULT;
-  // std::cout << ESC_FG_BLUE    << "Blue"    << ESC_FG_DEFAULT;
-  // std::cout << ESC_FG_MAGENTA << "Magenta" << ESC_FG_DEFAULT;
-  // std::cout << ESC_FG_CYAN    << "Cyan"    << ESC_FG_DEFAULT;
-  // std::cout << ESC_FG_WHITE   << "White"   << ESC_FG_DEFAULT;
-  // std::cout << ESC_FG_DEFAULT << "Default" << ESC_FG_DEFAULT;
 }
 
 void Render::write() {

@@ -18,19 +18,8 @@ int main(int argc, char** argv) {
 
   Cursor* cursor_yx = new Cursor(0, 0);
   cursor_yx->inspect();
-  //delete cursor_yx;
 
   Buffer* buffer = new Buffer();
-  // buffer->read_file("test.txt");
-  // buffer->remove_line(0); // remove initialized empty line
-  // buffer->insert_line("hello");
-  // buffer->insert_line("the");
-  // buffer->insert_line("world");
-  // buffer->remove_line(1);
-  // buffer->remove_character(1, 2);
-  // buffer->insert_character(0, 0, 'c');
-  // buffer->insert_character(1, 4, 's');
-  // 
   
   Keypress* keypress = new Keypress();
 

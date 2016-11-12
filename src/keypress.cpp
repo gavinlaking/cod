@@ -5,53 +5,6 @@
 int Keypress::getch(void) {
   this->key = getchar();
 
-  //char *characters = new char[4];
-
-  //std::vector<char> buffer;
-
-  // while(read(STDIN_FILENO, characters, 4) != 0) {
-  //   //buffer.push_back(this->key);
-
-  //   if (characters[0] == (char)27) {
-  //     if (characters[1] == '[') {
-  //       if (characters[2] == 'A') {
-  //         std::cout << "[UP]";// << std::endl;
-  //       } else if (characters[2] == 'B') {
-  //         std::cout << "[DOWN]";// << std::endl;
-  //       } else if (characters[2] == 'C') {
-  //         std::cout << "[RIGHT]";// << std::endl;
-  //       } else if (characters[2] == 'D') {
-  //         std::cout << "[LEFT]";// << std::endl;
-  //       } else {
-  //         std::cout << "\0";
-  //       }
-  //     } else if (characters[1] == 'O') {
-  //       std::cout << "\0";
-  //     } else {
-  //       std::cout << "\0";
-  //     }
-  //   } else {
-  //     // std::cout << std::dec << std::uppercase << characters[0] \
-  //     //           << std::dec << std::uppercase << characters[1] \
-  //     //           << std::dec << std::uppercase << characters[2] \
-  //     //           << std::dec << std::uppercase << characters[3] \
-  //     //           << "!" \
-  //     //           << std::dec << std::uppercase << characters[4] \
-  //     //           << "!"; // << std::endl;
-  //   }
-
-  //   //std::cout << "\e[32m[\e[39m" << (int)characters[0] << "\e[32m]\e[39m";
-
-  //   for(int i = 0; i <= 3; i++) {
-  //     std::cout << std::dec << std::uppercase << characters[i];
-  //     characters[i] = 0;
-      //   }
-  // }
-
-  // for(int i = 0; i <= 3; i++) {
-  //   std::cout << buffer[i] << std::endl;
-  // }
-
   if (this->key > (char)31 && this->key < (char)127) {
     return this->key;
   } else {
