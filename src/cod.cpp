@@ -34,7 +34,7 @@ int main(int argc, char** argv)
 
     render->clear();
 
-    buffer->inspect();
+    buffer->render();
 
     i++;
   }

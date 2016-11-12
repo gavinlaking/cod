@@ -23,6 +23,7 @@ class Buffer
     void read_file(std::string filename);
     void remove_line(unsigned yi);
     void remove_character(unsigned yi, unsigned xi);
+    void render();
 };
 
 #endif

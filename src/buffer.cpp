@@ -90,6 +90,27 @@ void Buffer::remove_character(unsigned yi, unsigned xi)
   remove_line(yi + 1);
 }
 
+void Buffer::render()
+{
+  std::vector<std::vector<char>>::iterator line;
+  std::vector<char>::iterator cell;
+
+  if (content.empty())
+  {
+    std::cout << "";
+  }
+  else
+  {
+    for (line = content.begin(); line != content.end(); ++line)
+    {
+      for (cell = line->begin(); cell != line->end(); ++cell)
+      {
+        std::cout << *cell;
+      }
+    }
+  }
+}
+
 int Buffer::character_count(unsigned yi)
 {
   return find_line(yi).size();
