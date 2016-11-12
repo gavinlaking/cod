@@ -24,11 +24,13 @@ const std::string ESC_FG_CYAN = "\e[36m";
 const std::string ESC_FG_WHITE = "\e[37m";
 const std::string ESC_FG_DEFAULT = "\e[39m";
 
-void Render::clear() {
+void Render::clear()
+{
   std::cout << ESC_CLEAR_SCREEN;
   std::cout << ESC_RESET_CURSOR;
 }
 
-void Render::write() {
+void Render::write()
+{
   std::cout << this->buffer;
 }

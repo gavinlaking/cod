@@ -1,7 +1,8 @@
 #include <iostream>
 #include "options.h"
 
-void Options::inspect() {
+void Options::inspect()
+{
   std::cout << "argc: " << count << " argv: [";
   for (int i = 0; i < count; i++)
   {

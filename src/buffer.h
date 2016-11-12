@@ -1,14 +1,16 @@
 #ifndef __BUFFER_H_INCLUDED__
 #define __BUFFER_H_INCLUDED__
 
-class Buffer {
+class Buffer
+{
   private:
     int character_count(unsigned yi);
     std::vector<char> find_line(unsigned yi);
     int line_count();
 
   public:
-    Buffer() {
+    Buffer()
+    {
       content = { {} };
     }
 

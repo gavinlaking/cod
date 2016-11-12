@@ -1,10 +1,11 @@
 #ifndef __KEYPRESS_H_INCLUDED__
 #define __KEYPRESS_H_INCLUDED__
 
-class Keypress {
+class Keypress
+{
   int key;
   public:
-    Keypress() {};
+    Keypress() {}
 
     int getch();
     void inspect();

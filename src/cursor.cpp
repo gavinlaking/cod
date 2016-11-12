@@ -1,46 +1,60 @@
 #include <iostream>
 #include "cursor.h"
 
-void Cursor::down() {
+void Cursor::down()
+{
   cy++;
 }
 
-void Cursor::inspect() {
+void Cursor::inspect()
+{
   std::cout << " cx: " << cx;
   std::cout << " cy: " << cy;
   std::cout << std::endl;
 }
 
-void Cursor::left() {
-  if (cx - 1 < 1) {
+void Cursor::left()
+{
+  if (cx - 1 < 1)
+  {
     cx = 1;
-  } else {
+  }
+  else
+  {
     cx--;
   }
 }
 
-void Cursor::restore() {
+void Cursor::restore()
+{
   cx = tmp_cx;
   cy = tmp_cy;
 }
 
-void Cursor::render() {
+void Cursor::render()
+{
   std::cout << "\e[" << cy << ";" << cx << "H";
 }
 
-void Cursor::right() {
+void Cursor::right()
+{
   cx++;
 }
 
-void Cursor::store() {
+void Cursor::store()
+{
   tmp_cx = cx;
   tmp_cy = cy;
 }
 
-void Cursor::up() {
-  if (cy - 1 < 1) {
+void Cursor::up()
+{
+  if (cy - 1 < 1)
+  {
     cy = 1;
-  } else {
+  }
+  else
+  {
     cy--;
   }
 }

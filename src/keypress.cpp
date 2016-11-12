@@ -2,17 +2,22 @@
 
 #include "keypress.h"
 
-int Keypress::getch(void) {
+int Keypress::getch(void)
+{
   this->key = getchar();
 
-  if (this->key > (char)31 && this->key < (char)127) {
+  if (this->key > (char)31 && this->key < (char)127)
+  {
     return this->key;
-  } else {
+  }
+  else
+  {
     return 0;
   }
 }
 
-void Keypress::inspect() {
+void Keypress::inspect()
+{
   std::cout << (char)this->key << " ";
   std::cout << std::dec << std::uppercase << "Dec: "   << this->key << " ";
   std::cout << std::hex << std::uppercase << "Hex: 0x" << this->key << " ";

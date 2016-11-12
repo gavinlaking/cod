@@ -12,30 +12,39 @@
 #include "render.h"
 #include "terminal.h"
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv)
+{
+  Buffer* buffer = new Buffer();
+  Cursor* cursor_yx = new Cursor(0, 0);
+
+  Render* render = new Render();
+  render->clear();
+
   Terminal* terminal = new Terminal();
   terminal->open();
 
-  Cursor* cursor_yx = new Cursor(0, 0);
-  cursor_yx->inspect();
-
-  Buffer* buffer = new Buffer();
-  
-  Keypress* keypress = new Keypress();
-
   int i = 0;
-  while(i < 20) {
+  while(i < 20)
+  {
+    Keypress* keypress = new Keypress();
     int key = keypress->getch();
+    delete keypress;
 
     buffer->insert_character(cursor_yx->cy - 1, cursor_yx->cx - 1, key);
+
+    render->clear();
+
     buffer->inspect();
+
     i++;
   }
 
   terminal->close();
-  
-  delete keypress;
-  delete buffer;
+
+  delete render;
   delete cursor_yx;
+  delete buffer;
   delete terminal;
+
+  return 0;
 }

@@ -1,20 +1,26 @@
 #ifndef __CURSOR_H_INCLUDED__
 #define __CURSOR_H_INCLUDED__
 
-class Cursor {
+class Cursor
+{
   int tmp_cx;
   int tmp_cy;
 
   public:
-    Cursor(int n, int m) {
+    Cursor(int n, int m)
+    {
       cy = (n < 1) ? 1 : n;
       cx = (m < 1) ? 1 : m;
     }
-    Cursor(int n) {
+
+    Cursor(int n)
+    {
       cy = (n < 1) ? 1 : n;
       cx = 1;
     }
-    Cursor() {
+
+    Cursor()
+    {
       cy = 1;
       cx = 1;
     }
