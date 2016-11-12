@@ -2,7 +2,7 @@
 
 #include "keypress.h"
 
-int Keypress::getch(void)
+int Keypress::handle(void)
 {
   this->key = getchar();
 

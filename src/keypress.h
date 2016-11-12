@@ -9,7 +9,7 @@ class Keypress
   public:
     Keypress() {}
 
-    int getch();
+    int handle();
     void inspect();
 };
 

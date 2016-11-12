@@ -27,7 +27,7 @@ int main(int argc, char** argv)
   while(i < 20)
   {
     Keypress* keypress = new Keypress();
-    int key = keypress->getch();
+    int key = keypress->handle();
     delete keypress;
 
     buffer->insert_character(cursor_yx->cy - 1, cursor_yx->cx - 1, key);
