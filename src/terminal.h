@@ -12,6 +12,7 @@ class Terminal {
       tyn = 25;
     }
 
+    struct termios oldt, newt;
     int tx;
     int ty;
     int txn;
