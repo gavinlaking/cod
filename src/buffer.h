@@ -9,7 +9,7 @@ class Buffer {
 
   public:
     Buffer() {
-      content = {};
+      content = { {} };
     }
 
     std::vector<std::vector<char>> content;
