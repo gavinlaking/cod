@@ -1,9 +1,9 @@
 #include <iostream>
 #include "cursor.h"
 
-void Cursor::down()
+int Cursor::down()
 {
-  cy++;
+  return cy++;
 }
 
 void Cursor::inspect()
@@ -13,15 +13,15 @@ void Cursor::inspect()
   std::cout << std::endl;
 }
 
-void Cursor::left()
+int Cursor::left()
 {
   if (cx - 1 < 1)
   {
-    cx = 1;
+    return cx = 1;
   }
   else
   {
-    cx--;
+    return cx--;
   }
 }
 
@@ -36,9 +36,9 @@ void Cursor::render()
   std::cout << "\e[" << cy << ";" << cx << "H";
 }
 
-void Cursor::right()
+int Cursor::right()
 {
-  cx++;
+  return cx++;
 }
 
 void Cursor::store()
@@ -47,14 +47,14 @@ void Cursor::store()
   tmp_cy = cy;
 }
 
-void Cursor::up()
+int Cursor::up()
 {
   if (cy - 1 < 1)
   {
-    cy = 1;
+    return cy = 1;
   }
   else
   {
-    cy--;
+    return cy--;
   }
 }

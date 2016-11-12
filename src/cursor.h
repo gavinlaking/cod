@@ -30,22 +30,22 @@ class Cursor
     int cx;
 
     // Moves the cursor down by one line.
-    void down();
+    int down();
 
     void inspect();
 
     // Moves the cursor left by one character.
-    void left();
+    int left();
 
     void render();
     void restore();
 
     // Moves the cursor right by one character.
-    void right();
+    int right();
     void store();
 
     // Moves the cursor up by one line.
-    void up();
+    int up();
 };
 
 #endif

@@ -31,6 +31,7 @@ int main(int argc, char** argv)
     delete keypress;
 
     buffer->insert_character(cursor_yx->cy - 1, cursor_yx->cx - 1, key);
+    cursor_yx->right();
 
     render->clear();
 
