@@ -8,7 +8,7 @@ Sources = ./src/buffer.cpp \
 					./src/cod.cpp
 
 CXX = g++
-CXXFLAGS = -O3
+CXXFLAGS = -O3 -Wall
 DESTPATH = ./bin/$(Target)
 
 all: all_linux
