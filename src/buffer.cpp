@@ -47,10 +47,10 @@ void Buffer::insert_line(std::string str)
 
 void Buffer::insert_character(unsigned yi, unsigned xi, char c)
 {
-  std::vector<char> line = Buffer::find_line(yi);
+  std::vector<char> line = find_line(yi);
   line.insert(line.begin() + xi, c);
   content.insert(content.begin() + yi, line);
-  Buffer::remove_line(yi + 1);
+  remove_line(yi + 1);
 }
 
 void Buffer::read_file(std::string filename)
@@ -64,7 +64,7 @@ void Buffer::read_file(std::string filename)
   {
     while(std::getline(infile, line))
     {
-      Buffer::insert_line(line);
+      insert_line(line);
     }
   }
   else
@@ -84,15 +84,15 @@ void Buffer::remove_line(unsigned yi)
 
 void Buffer::remove_character(unsigned yi, unsigned xi)
 {
-  std::vector<char> line = Buffer::find_line(yi);
+  std::vector<char> line = find_line(yi);
   line.erase(line.begin() + xi);
   content.insert(content.begin() + yi, line);
-  Buffer::remove_line(yi + 1);
+  remove_line(yi + 1);
 }
 
 int Buffer::character_count(unsigned yi)
 {
-  return Buffer::find_line(yi).size();
+  return find_line(yi).size();
 }
 
 std::vector<char> Buffer::find_line(unsigned yi)
