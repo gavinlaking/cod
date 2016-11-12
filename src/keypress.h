@@ -3,7 +3,9 @@
 
 class Keypress
 {
-  int key;
+  private:
+    int key;
+
   public:
     Keypress() {}
 

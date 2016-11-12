@@ -3,8 +3,9 @@
 
 class Cursor
 {
-  int tmp_cx;
-  int tmp_cy;
+  private:
+    int tmp_cx;
+    int tmp_cy;
 
   public:
     Cursor(int n, int m)

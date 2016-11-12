@@ -3,7 +3,8 @@
 
 class Terminal
 {
-  void init();
+  private:
+    void init();
 
   public:
     Terminal()

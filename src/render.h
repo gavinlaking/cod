@@ -3,6 +3,7 @@
 
 class Render
 {
+  private:
     std::string buffer;
 
   public:
