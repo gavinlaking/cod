@@ -4,7 +4,7 @@
 class Keypress {
   int key;
   public:
-    Keypress() {}
+    Keypress() {};
 
     int getch();
     void inspect();

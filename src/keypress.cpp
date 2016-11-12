@@ -3,17 +3,6 @@
 #include "keypress.h"
 
 int Keypress::getch(void) {
-  // struct termios oldt, newt;
-
-  // tcgetattr(STDIN_FILENO, &oldt);
-
-  // newt = oldt;
-
-  // // and don't echo the keypress.
-  // newt.c_lflag &= ~(ICANON | ECHO);
-
-  // tcsetattr(STDIN_FILENO, TCSANOW, &newt);
-
   this->key = getchar();
 
   //char *characters = new char[4];
@@ -63,17 +52,11 @@ int Keypress::getch(void) {
   //   std::cout << buffer[i] << std::endl;
   // }
 
-  // tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
-
-  // if (this->key == (char)27) {
-  //   std::cout << "ESC";
-
-  // } else {
-  //   std::cout << "[" << this->key << "]";
-  //   return this->key;
-  // }
-
-  return this->key;
+  if (this->key > (char)31 && this->key < (char)127) {
+    return this->key;
+  } else {
+    return 0;
+  }
 }
 
 void Keypress::inspect() {
