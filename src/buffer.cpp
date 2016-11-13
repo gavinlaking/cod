@@ -11,7 +11,7 @@ void Buffer::clear()
 
 void Buffer::inspect()
 {
-  std::vector<std::vector<char>>::iterator line;
+  std::vector< std::vector<char> >::iterator line;
   std::vector<char>::iterator cell;
 
   if (content.empty())
@@ -92,7 +92,7 @@ void Buffer::remove_character(unsigned yi, unsigned xi)
 
 void Buffer::render()
 {
-  std::vector<std::vector<char>>::iterator line;
+  std::vector< std::vector<char> >::iterator line;
   std::vector<char>::iterator cell;
 
   if (content.empty())

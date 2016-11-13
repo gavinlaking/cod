@@ -14,8 +14,9 @@
 
 int main(int argc, char** argv)
 {
-  Buffer* buffer = new Buffer();
   Cursor* cursor_yx = new Cursor(0, 0);
+  Buffer* buffer = new Buffer();
+
 
   Render* render = new Render();
   render->clear();
@@ -36,15 +37,14 @@ int main(int argc, char** argv)
     render->clear();
 
     buffer->render();
-
     i++;
   }
 
   terminal->close();
 
   delete render;
-  delete cursor_yx;
   delete buffer;
+  delete cursor_yx;
   delete terminal;
 
   return 0;

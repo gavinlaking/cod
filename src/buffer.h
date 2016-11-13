@@ -14,7 +14,7 @@ class Buffer
       content = { {} };
     }
 
-    std::vector<std::vector<char>> content;
+    std::vector< std::vector<char> > content;
 
     void clear();
     void inspect();
