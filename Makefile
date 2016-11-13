@@ -7,6 +7,7 @@ Sources = ./src/buffer.cpp \
 					./src/terminal.cpp \
 					./src/cod.cpp
 
+# CXX = clang++-3.9
 CXX = g++
 CXXFLAGS = -O3 -Wall
 DESTPATH = ./bin/$(Target)
