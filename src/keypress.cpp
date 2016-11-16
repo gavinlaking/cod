@@ -6,7 +6,19 @@ int Keypress::handle(void)
 {
   this->key = getchar();
 
-  if (this->key > (char)31 && this->key < (char)127)
+  if (this->key == (char)10) // return
+  {
+    return 0;
+  }
+  else if (this->key == (char)27) // escape
+  {
+    return 0;
+  }
+  else if (this->key == (char)127) // backspace
+  {
+    return 0;
+  }
+  else if (this->key > (char)31 && this->key < (char)127)
   {
     return this->key;
   }
