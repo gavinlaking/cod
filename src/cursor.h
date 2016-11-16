@@ -10,20 +10,20 @@ class Cursor
   public:
     Cursor(int n, int m)
     {
-      cy = (n < 1) ? 1 : n;
-      cx = (m < 1) ? 1 : m;
+      cy = tmp_cy = (n < 0) ? 0 : n;
+      cx = tmp_cx = (m < 0) ? 0 : m;
     }
 
     Cursor(int n)
     {
-      cy = (n < 1) ? 1 : n;
-      cx = 1;
+      cy = tmp_cy = (n < 0) ? 0 : n;
+      cx = tmp_cx = 0;
     }
 
     Cursor()
     {
-      cy = 1;
-      cx = 1;
+      cy = tmp_cy = 0;
+      cx = tmp_cx = 0;
     }
 
     int cy;

@@ -1,6 +1,6 @@
 Target = cod
-Sources = ./src/buffer.cpp \
-					./src/cursor.cpp \
+Sources = ./src/cursor.cpp \
+					./src/buffer.cpp \
 					./src/keypress.cpp \
 					./src/options.cpp \
 					./src/render.cpp \

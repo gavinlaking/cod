@@ -5,8 +5,8 @@
 #include <unistd.h>
 #include <vector>
 
-#include "buffer.h"
 #include "cursor.h"
+#include "buffer.h"
 #include "keypress.h"
 #include "options.h"
 #include "render.h"
@@ -15,8 +15,7 @@
 int main(int argc, char** argv)
 {
   Cursor* cursor_yx = new Cursor(0, 0);
-  Buffer* buffer = new Buffer();
-
+  Buffer* buffer = new Buffer(*cursor_yx);
 
   Render* render = new Render();
   render->clear();
@@ -31,12 +30,12 @@ int main(int argc, char** argv)
     int key = keypress->handle();
     delete keypress;
 
-    buffer->insert_character(cursor_yx->cy - 1, cursor_yx->cx - 1, key);
-    cursor_yx->right();
+    buffer->insert_character(key);
 
     render->clear();
 
     buffer->render();
+
     i++;
   }
 

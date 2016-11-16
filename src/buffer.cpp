@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 
+#include "cursor.h"
 #include "buffer.h"
 
 void Buffer::clear()
@@ -45,12 +46,16 @@ void Buffer::insert_line(std::string str)
   content.push_back(line);
 }
 
-void Buffer::insert_character(unsigned yi, unsigned xi, char c)
+void Buffer::insert_character(char c)
 {
+  unsigned yi = m_cursor.cy;
+  unsigned xi = m_cursor.cx;
   std::vector<char> line = find_line(yi);
   line.insert(line.begin() + xi, c);
   content.insert(content.begin() + yi, line);
   remove_line(yi + 1);
+
+  m_cursor.right();
 }
 
 void Buffer::read_file(std::string filename)
@@ -88,6 +93,8 @@ void Buffer::remove_character(unsigned yi, unsigned xi)
   line.erase(line.begin() + xi);
   content.insert(content.begin() + yi, line);
   remove_line(yi + 1);
+
+  m_cursor.left();
 }
 
 void Buffer::render()
