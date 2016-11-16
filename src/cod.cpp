@@ -26,11 +26,9 @@ int main(int argc, char** argv)
   int i = 0;
   while(i < 20)
   {
-    Keypress* keypress = new Keypress();
-    int key = keypress->handle();
+    Keypress* keypress = new Keypress(*buffer);
+    keypress->handle();
     delete keypress;
-
-    buffer->insert_character(key);
 
     render->clear();
 

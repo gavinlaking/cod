@@ -5,11 +5,12 @@ class Keypress
 {
   private:
     int key;
+    Buffer& m_buffer;
 
   public:
-    Keypress() {}
+    Keypress(Buffer& buffer) : m_buffer(buffer) {}
 
-    int handle();
+    void handle();
     void inspect();
 };
 

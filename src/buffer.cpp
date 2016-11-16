@@ -50,6 +50,7 @@ void Buffer::insert_character(char c)
 {
   unsigned yi = m_cursor.cy;
   unsigned xi = m_cursor.cx;
+
   std::vector<char> line = find_line(yi);
   line.insert(line.begin() + xi, c);
   content.insert(content.begin() + yi, line);
@@ -87,11 +88,16 @@ void Buffer::remove_line(unsigned yi)
   }
 }
 
-void Buffer::remove_character(unsigned yi, unsigned xi)
+void Buffer::remove_character()
 {
+  unsigned yi = m_cursor.cy;
+  unsigned xi = m_cursor.cx;
+
   std::vector<char> line = find_line(yi);
-  line.erase(line.begin() + xi);
+  line.erase(line.begin() + xi - 1);
+
   content.insert(content.begin() + yi, line);
+
   remove_line(yi + 1);
 
   m_cursor.left();

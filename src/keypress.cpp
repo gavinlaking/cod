@@ -1,38 +1,38 @@
+#include <vector>
 #include <iostream>
 
+#include "cursor.h"
+#include "buffer.h"
 #include "keypress.h"
 
-int Keypress::handle(void)
+void Keypress::handle(void)
 {
-  this->key = getchar();
+  key = getchar();
 
-  if (this->key == (char)10) // return
+  if (key == (char)10) // return
   {
-    return 0;
   }
-  else if (this->key == (char)27) // escape
+  else if (key == (char)27) // escape
   {
-    return 0;
   }
-  else if (this->key == (char)127) // backspace
+  else if (key == (char)127) // backspace
   {
-    return 0;
+    m_buffer.remove_character();
   }
-  else if (this->key > (char)31 && this->key < (char)127)
+  else if (key > (char)31 && key < (char)127)
   {
-    return this->key;
+    m_buffer.insert_character(key);
   }
   else
   {
-    return 0;
   }
 }
 
 void Keypress::inspect()
 {
-  std::cout << (char)this->key << " ";
-  std::cout << std::dec << std::uppercase << "Dec: "   << this->key << " ";
-  std::cout << std::hex << std::uppercase << "Hex: 0x" << this->key << " ";
-  std::cout << std::oct << std::uppercase << "Oct: 0"  << this->key;
+  std::cout << (char)key << " ";
+  std::cout << std::dec << std::uppercase << "Dec: "   << key << " ";
+  std::cout << std::hex << std::uppercase << "Hex: 0x" << key << " ";
+  std::cout << std::oct << std::uppercase << "Oct: 0"  << key;
   std::cout << std::endl;
 }
