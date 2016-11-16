@@ -7,10 +7,10 @@ class Buffer
     int character_count(unsigned yi);
     std::vector<char> find_line(unsigned yi);
     int line_count();
-    Cursor m_cursor;
+    Cursor& m_cursor;
 
   public:
-    Buffer(const Cursor &cursor) : m_cursor(cursor)
+    Buffer(Cursor& cursor) : m_cursor(cursor)
     {
       content = { {} };
     }
