@@ -37,6 +37,7 @@ class Cursor
     // Moves the cursor left by one character.
     int left();
 
+    void position(int n, int m);
     void render();
     void restore();
 

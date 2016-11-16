@@ -26,10 +26,19 @@ int Cursor::left()
   }
 }
 
+void Cursor::position(int n, int m)
+{
+  store();
+  cy = (n < 0) ? 0 : n;
+  cx = (m < 0) ? 0 : m;
+  render();
+}
+
 void Cursor::restore()
 {
   cx = tmp_cx;
   cy = tmp_cy;
+  render();
 }
 
 void Cursor::render()
