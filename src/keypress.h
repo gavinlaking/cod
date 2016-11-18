@@ -10,7 +10,7 @@ class Keypress
   public:
     Keypress(Buffer& buffer) : m_buffer(buffer) {}
 
-    void handle();
+    bool handle();
     void inspect();
 };
 

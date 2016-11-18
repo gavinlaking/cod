@@ -5,15 +5,17 @@
 #include "buffer.h"
 #include "keypress.h"
 
-void Keypress::handle(void)
+bool Keypress::handle(void)
 {
   key = getchar();
 
   if (key == (char)10) // return
   {
+    m_buffer.insert_line("");
   }
   else if (key == (char)27) // escape
   {
+    return false;
   }
   else if (key == (char)127) // backspace
   {
@@ -26,6 +28,7 @@ void Keypress::handle(void)
   else
   {
   }
+  return true;
 }
 
 void Keypress::inspect()
