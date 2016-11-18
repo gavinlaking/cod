@@ -77,6 +77,7 @@ void Buffer::read_file(std::string filename)
   {
     std::cout << "File not found." << std::endl;
   }
+
   infile.close();
 }
 
