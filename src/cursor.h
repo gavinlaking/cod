@@ -29,6 +29,11 @@ class Cursor
     int cy;
     int cx;
 
+    // Move the cursor to the last line.
+    // TODO: Should this be the last line of the terminal or the
+    //   current buffer?
+    int bottom();
+
     // Moves the cursor down by one line.
     int down();
 
@@ -36,6 +41,7 @@ class Cursor
 
     // Moves the cursor left by one character.
     int left();
+    int leftmost();
 
     void position(int n, int m);
     void render();
@@ -43,7 +49,15 @@ class Cursor
 
     // Moves the cursor right by one character.
     int right();
+
+    // Moves the cursor to the last column.
+    // TODO: Should this be the last column of the terminal or the
+    //   current buffer?
+    int rightmost();
     void store();
+
+    // Moves the cursor to the first line.
+    int top();
 
     // Moves the cursor up by one line.
     int up();
