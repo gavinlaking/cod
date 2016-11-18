@@ -4,7 +4,7 @@
 class Buffer
 {
   private:
-    int character_count(unsigned yi);
+    int character_count();
     std::vector<char> find_line();
     int line_count();
     Cursor& m_cursor;
