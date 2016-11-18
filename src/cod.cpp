@@ -13,34 +13,27 @@
 
 int main(int argc, char** argv)
 {
-  Cursor* cursor_yx = new Cursor(0, 0);
-  Buffer* buffer = new Buffer(*cursor_yx);
-
-  Render* render = new Render();
-  render->clear();
-
   Terminal* terminal = new Terminal();
   terminal->open();
 
-  int i = 0;
-  while(i < 20)
+  Cursor* cursor_yx = new Cursor(0, 0);
+  Buffer* buffer = new Buffer(*cursor_yx);
+  buffer->clear();
+
+  Keypress* keypress = new Keypress(*buffer);
+
+  while(keypress->handle())
   {
-    Keypress* keypress = new Keypress(*buffer);
-    keypress->handle();
-    delete keypress;
-
-    render->clear();
-
+    buffer->clear();
     buffer->render();
-
-    i++;
   }
+
+  delete keypress;
+  delete buffer;
+  delete cursor_yx;
 
   terminal->close();
 
-  delete render;
-  delete buffer;
-  delete cursor_yx;
   delete terminal;
 
   return 0;
