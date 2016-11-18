@@ -1,5 +1,6 @@
 Target = cod
 Sources = ./src/cursor.cpp \
+					./src/line.cpp \
 					./src/buffer.cpp \
 					./src/keypress.cpp \
 					./src/options.cpp \
@@ -8,7 +9,7 @@ Sources = ./src/cursor.cpp \
 
 # CXX = clang++-3.9
 CXX = g++
-CXXFLAGS = -O3 -Wall
+CXXFLAGS = -Wall -DDEBUG -g
 DESTPATH = ./bin/$(Target)
 
 all: all_linux
