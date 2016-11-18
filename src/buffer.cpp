@@ -5,9 +5,13 @@
 #include "cursor.h"
 #include "buffer.h"
 
+const std::string ESC_CLEAR_SCREEN = "\e[2J";
+const std::string ESC_RESET_CURSOR = "\e[1;1H";
+
 void Buffer::clear()
 {
-  content = {};
+  std::cout << ESC_CLEAR_SCREEN;
+  std::cout << ESC_RESET_CURSOR;
 }
 
 void Buffer::inspect()
@@ -51,7 +55,7 @@ void Buffer::insert_character(char c)
   unsigned yi = m_cursor.cy;
   unsigned xi = m_cursor.cx;
 
-  std::vector<char> line = find_line(yi);
+  std::vector<char> line = find_line();
   line.insert(line.begin() + xi, c);
   content.insert(content.begin() + yi, line);
   remove_line(yi + 1);
@@ -94,7 +98,7 @@ void Buffer::remove_character()
   unsigned yi = m_cursor.cy;
   unsigned xi = m_cursor.cx;
 
-  std::vector<char> line = find_line(yi);
+  std::vector<char> line = find_line();
   line.erase(line.begin() + xi - 1);
 
   content.insert(content.begin() + yi, line);
@@ -125,13 +129,14 @@ void Buffer::render()
   }
 }
 
-int Buffer::character_count(unsigned yi)
+int Buffer::character_count()
 {
-  return find_line(yi).size();
+  return find_line().size();
 }
 
-std::vector<char> Buffer::find_line(unsigned yi)
+std::vector<char> Buffer::find_line()
 {
+  unsigned yi = m_cursor.cy;
   return content.at(yi);
 }
 
