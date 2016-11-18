@@ -3,7 +3,6 @@ Sources = ./src/cursor.cpp \
 					./src/buffer.cpp \
 					./src/keypress.cpp \
 					./src/options.cpp \
-					./src/render.cpp \
 					./src/terminal.cpp \
 					./src/cod.cpp
 

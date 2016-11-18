@@ -9,7 +9,6 @@
 #include "buffer.h"
 #include "keypress.h"
 #include "options.h"
-#include "render.h"
 #include "terminal.h"
 
 int main(int argc, char** argv)
