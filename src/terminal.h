@@ -25,6 +25,7 @@ class Terminal
     int height();
     void inspect();
     void open();
+    void resize();
     int width();
 };
 
