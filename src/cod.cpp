@@ -1,6 +1,8 @@
+#include <execinfo.h>
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <signal.h>
 #include <termios.h>
 #include <unistd.h>
 #include <vector>
@@ -11,8 +13,23 @@
 #include "options.h"
 #include "terminal.h"
 
+void handler(int sig)
+{
+  void *array[20];
+  size_t size;
+
+  size = backtrace(array, 20); // get void*'s for all entries on the stack
+
+  // print out all the frames to stderr
+  fprintf(stderr, "Error: signal %d:\n", sig);
+  backtrace_symbols_fd(array, size, STDERR_FILENO);
+  exit(1);
+}
+
 int main(int argc, char** argv)
 {
+  signal(SIGSEGV, handler);
+
   Terminal* terminal = new Terminal();
   terminal->open();
 
@@ -25,7 +42,7 @@ int main(int argc, char** argv)
   while(keypress->handle())
   {
     buffer->clear();
-    buffer->render();
+    buffer->inspect();
   }
 
   delete keypress;

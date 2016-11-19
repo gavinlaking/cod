@@ -20,9 +20,9 @@ class Buffer
     void clear();
     void inspect();
     void insert_line(std::string str);
-    void insert_character(char c);
+    void insert_character(char character);
     void read_file(std::string filename);
-    void remove_line(unsigned yi);
+    void remove_line(unsigned iy);
     void remove_character();
     void render();
 };

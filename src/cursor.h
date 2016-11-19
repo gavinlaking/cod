@@ -4,26 +4,24 @@
 class Cursor
 {
   private:
-    int tmp_cx;
-    int tmp_cy;
 
   public:
     Cursor(int n, int m)
     {
-      cy = tmp_cy = (n < 0) ? 0 : n;
-      cx = tmp_cx = (m < 0) ? 0 : m;
+      cy = (n < 1) ? 1 : n;
+      cx = (m < 1) ? 1 : m;
     }
 
     Cursor(int n)
     {
-      cy = tmp_cy = (n < 0) ? 0 : n;
-      cx = tmp_cx = 0;
+      cy = (n < 1) ? 1 : n;
+      cx = 1;
     }
 
     Cursor()
     {
-      cy = tmp_cy = 0;
-      cx = tmp_cx = 0;
+      cy = 1;
+      cx = 1;
     }
 
     int cy;
@@ -38,6 +36,12 @@ class Cursor
     int down();
 
     void inspect();
+
+    // Returns the cursor x index.
+    unsigned ix();
+
+    // Returns the cursor y index.
+    unsigned iy();
 
     // Moves the cursor left by one character.
     int left();

@@ -9,7 +9,7 @@ int Cursor::bottom()
 
 int Cursor::leftmost()
 {
-  return cx = 0;
+  return cx = 1;
 }
 
 // TODO: get width from Terminal
@@ -30,17 +30,32 @@ void Cursor::inspect()
   std::cout << "\e[25;80H"; // position cursor
   std::cout << " cx: " << std::to_string(cx);
   std::cout << " cy: " << std::to_string(cy);
-
   std::cout << "\e[u"; // restore cursor
-  // std::cout << " tcx: " << std::to_string(tmp_cx);
-  // std::cout << " tcy: " << std::to_string(tmp_cy);
+}
+
+unsigned Cursor::ix()
+{
+  // if (cx - 1 <= 0)
+  // {
+  //   return 1;
+  // }
+  // else
+  // {
+  //   return cx - 1;
+  // }
+  return (unsigned)cx - 1;
+}
+
+unsigned Cursor::iy()
+{
+  return (unsigned)cy - 1;
 }
 
 int Cursor::left()
 {
-  if (cx - 1 < 0)
+  if (cx - 1 < 1)
   {
-    return cx = 0;
+    return cx = 1;
   }
   else
   {
@@ -51,8 +66,8 @@ int Cursor::left()
 void Cursor::position(int n, int m)
 {
   store();
-  cy = (n < 0) ? 0 : n;
-  cx = (m < 0) ? 0 : m;
+  cy = (n < 1) ? 1 : n;
+  cx = (m < 1) ? 1 : m;
   render();
 }
 
@@ -61,10 +76,13 @@ void Cursor::restore()
   std::cout << "\e[u";
 }
 
-// can be either 'f' or 'H'
 void Cursor::render()
 {
-  std::cout << "\e[" << std::to_string(cy + 1) << ";" << std::to_string(cx + 1) << "f";
+  std::cout << "\e[";
+  std::cout << std::to_string(cy);
+  std::cout << ";";
+  std::cout << std::to_string(cx);
+  std::cout << "f"; // can be either 'f' or 'H'
 }
 
 // TODO: get width from Terminal
@@ -80,14 +98,14 @@ void Cursor::store()
 
 int Cursor::top()
 {
-  return cy = 0;
+  return cy = 1;
 }
 
 int Cursor::up()
 {
-  if (cy - 1 < 0)
+  if (cy - 1 < 1)
   {
-    return cy = 0;
+    return cy = 1;
   }
   else
   {
