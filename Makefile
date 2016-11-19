@@ -9,7 +9,7 @@ Sources = ./src/cursor.cpp \
 
 # CXX = clang++-3.9
 CXX = g++
-CXXFLAGS = -Wall -DDEBUG -g
+CXXFLAGS = -Wall -DDEBUG -g -rdynamic
 DESTPATH = ./bin/$(Target)
 
 all: all_linux
