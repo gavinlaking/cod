@@ -48,6 +48,8 @@ void Buffer::insert_line(std::string str)
 {
   std::vector<char> line(str.begin(), str.end());
   content.push_back(line);
+  m_cursor.down();
+  m_cursor.leftmost();
 }
 
 void Buffer::insert_character(char c)
@@ -125,7 +127,9 @@ void Buffer::render()
       {
         std::cout << *cell;
       }
+      std::cout << std::endl;
     }
+    m_cursor.render();
   }
 }
 
