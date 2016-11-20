@@ -1,4 +1,10 @@
 #include <iostream>
+#include <sys/ioctl.h>
+#include <stdio.h>
+#include <termios.h>
+#include <unistd.h>
+
+#include "terminal.h"
 #include "cursor.h"
 
  // TODO: get height from Terminal

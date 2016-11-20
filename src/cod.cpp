@@ -7,11 +7,11 @@
 #include <unistd.h>
 #include <vector>
 
+#include "terminal.h"
 #include "cursor.h"
 #include "buffer.h"
 #include "keypress.h"
 #include "options.h"
-#include "terminal.h"
 
 void handler(int sig)
 {
@@ -33,8 +33,8 @@ int main(int argc, char** argv)
   Terminal* terminal = new Terminal();
   terminal->open();
 
-  Cursor* cursor_yx = new Cursor(0, 0);
-  Buffer* buffer = new Buffer(*cursor_yx);
+  Cursor* cursor = new Cursor(*terminal);
+  Buffer* buffer = new Buffer(*cursor);
   buffer->clear();
 
   Keypress* keypress = new Keypress(*buffer);
@@ -47,7 +47,7 @@ int main(int argc, char** argv)
 
   delete keypress;
   delete buffer;
-  delete cursor_yx;
+  delete cursor;
 
   terminal->close();
 

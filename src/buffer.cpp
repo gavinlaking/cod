@@ -1,7 +1,12 @@
-#include <vector>
 #include <fstream>
 #include <iostream>
+#include <sys/ioctl.h>
+#include <stdio.h>
+#include <termios.h>
+#include <unistd.h>
+#include <vector>
 
+#include "terminal.h"
 #include "cursor.h"
 #include "buffer.h"
 

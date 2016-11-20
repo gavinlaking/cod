@@ -4,21 +4,10 @@
 class Cursor
 {
   private:
+    Terminal& m_terminal;
 
   public:
-    Cursor(int n, int m)
-    {
-      cy = (n < 1) ? 1 : n;
-      cx = (m < 1) ? 1 : m;
-    }
-
-    Cursor(int n)
-    {
-      cy = (n < 1) ? 1 : n;
-      cx = 1;
-    }
-
-    Cursor()
+    Cursor(Terminal& terminal) : m_terminal(terminal)
     {
       cy = 1;
       cx = 1;
