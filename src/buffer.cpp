@@ -1,7 +1,12 @@
-#include <vector>
 #include <fstream>
 #include <iostream>
+#include <sys/ioctl.h>
+#include <stdio.h>
+#include <termios.h>
+#include <unistd.h>
+#include <vector>
 
+#include "terminal.h"
 #include "cursor.h"
 #include "buffer.h"
 
@@ -35,30 +40,33 @@ void Buffer::inspect()
 
       for (cell = line->begin(); cell != line->end(); ++cell)
       {
-        std::cout << "    \e[33m[\e[39m" << *cell << "\e[33m]\e[39m" << std::endl;
+        std::cout << "    \e[33m[\e[39m";
+        std::cout << *cell;
+        std::cout << "\e[33m]\e[39m";
+        std::cout << std::endl;
       }
 
       std::cout << "  \e[32m]\e[39m" << std::endl;
     }
     std::cout << "\e[31m]\e[39m" << std::endl;
   }
+  //m_cursor.inspect();
 }
 
 void Buffer::insert_line(std::string str)
 {
   std::vector<char> line(str.begin(), str.end());
   content.push_back(line);
+  m_cursor.down();
+  m_cursor.leftmost();
 }
 
-void Buffer::insert_character(char c)
+void Buffer::insert_character(char character)
 {
-  unsigned yi = m_cursor.cy;
-  unsigned xi = m_cursor.cx;
-
   std::vector<char> line = find_line();
-  line.insert(line.begin() + xi, c);
-  content.insert(content.begin() + yi, line);
-  remove_line(yi + 1);
+  line.insert(line.begin() + m_cursor.ix(), character);
+  content.insert(content.begin() + m_cursor.iy(), line);
+  remove_line(m_cursor.iy() + 1);
 
   m_cursor.right();
 }
@@ -85,27 +93,37 @@ void Buffer::read_file(std::string filename)
   infile.close();
 }
 
-void Buffer::remove_line(unsigned yi)
+void Buffer::remove_line(unsigned iy)
 {
-  if (content.size() > yi)
+  if (content.size() > iy)
   {
-    content.erase(content.begin() + yi);
+    content.erase(content.begin() + iy);
+  }
+
+  if (content.empty())
+  {
+    content = { {} };
+    m_cursor.reset();
   }
 }
 
 void Buffer::remove_character()
 {
-  unsigned yi = m_cursor.cy;
-  unsigned xi = m_cursor.cx;
-
   std::vector<char> line = find_line();
-  line.erase(line.begin() + xi - 1);
 
-  content.insert(content.begin() + yi, line);
+  if (line.empty())
+  {
+    remove_line(m_cursor.iy());
+    m_cursor.up();
+  }
+  else
+  {
+    line.erase(line.begin() + m_cursor.ix() - 1);
+    content.insert(content.begin() + m_cursor.iy(), line);
+    remove_line(m_cursor.iy() + 1);
 
-  remove_line(yi + 1);
-
-  m_cursor.left();
+    m_cursor.left();
+  }
 }
 
 void Buffer::render()
@@ -125,7 +143,9 @@ void Buffer::render()
       {
         std::cout << *cell;
       }
+      std::cout << std::endl;
     }
+    m_cursor.render();
   }
 }
 
@@ -136,8 +156,7 @@ int Buffer::character_count()
 
 std::vector<char> Buffer::find_line()
 {
-  unsigned yi = m_cursor.cy;
-  return content.at(yi);
+  return content.at(m_cursor.iy());
 }
 
 int Buffer::line_count()

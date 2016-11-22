@@ -1,14 +1,15 @@
 Target = cod
-Sources = ./src/cursor.cpp \
+Sources = ./src/terminal.cpp \
+					./src/cursor.cpp \
+					./src/line.cpp \
 					./src/buffer.cpp \
 					./src/keypress.cpp \
 					./src/options.cpp \
-					./src/terminal.cpp \
 					./src/cod.cpp
 
 # CXX = clang++-3.9
 CXX = g++
-CXXFLAGS = -O3 -Wall
+CXXFLAGS = -Wall -DDEBUG -g -rdynamic
 DESTPATH = ./bin/$(Target)
 
 all: all_linux

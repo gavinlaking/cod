@@ -1,4 +1,6 @@
 #include <iostream>
+#include <sys/ioctl.h>
+#include <stdio.h>
 #include <termios.h>
 #include <unistd.h>
 
@@ -29,7 +31,7 @@ void Terminal::close()
   tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
 }
 
-int Terminal::height()
+unsigned Terminal::height()
 {
   return tyn;
 }
@@ -47,9 +49,19 @@ void Terminal::open()
   newt = oldt;
   newt.c_lflag &= ~(ICANON | ECHO);
   tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+
+  resize();
 }
 
-int Terminal::width()
+void Terminal::resize()
+{
+  struct winsize w;
+  ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+  txn = w.ws_col;
+  tyn = w.ws_row;
+}
+
+unsigned Terminal::width()
 {
   return txn;
 }
