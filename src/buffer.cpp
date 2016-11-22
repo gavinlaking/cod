@@ -99,16 +99,31 @@ void Buffer::remove_line(unsigned iy)
   {
     content.erase(content.begin() + iy);
   }
+
+  if (content.empty())
+  {
+    content = { {} };
+    m_cursor.reset();
+  }
 }
 
 void Buffer::remove_character()
 {
   std::vector<char> line = find_line();
-  line.erase(line.begin() + m_cursor.ix() - 1);
-  content.insert(content.begin() + m_cursor.iy(), line);
-  remove_line(m_cursor.iy() + 1);
 
-  m_cursor.left();
+  if (line.empty())
+  {
+    remove_line(m_cursor.iy());
+    m_cursor.up();
+  }
+  else
+  {
+    line.erase(line.begin() + m_cursor.ix() - 1);
+    content.insert(content.begin() + m_cursor.iy(), line);
+    remove_line(m_cursor.iy() + 1);
+
+    m_cursor.left();
+  }
 }
 
 void Buffer::render()

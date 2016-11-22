@@ -40,6 +40,9 @@ class Cursor
     void render();
     void restore();
 
+    // Moves the cursor to 1, 1.
+    void reset();
+
     // Moves the cursor right by one character.
     int right();
 

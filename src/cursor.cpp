@@ -80,6 +80,15 @@ void Cursor::position(int n, int m)
   store();
   cy = (n < 1) ? 1 : n;
   cx = (m < 1) ? 1 : m;
+
+  render();
+}
+
+void Cursor::reset()
+{
+  cy = 1;
+  cx = 1;
+
   render();
 }
 
