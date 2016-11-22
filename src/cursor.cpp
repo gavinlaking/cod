@@ -10,18 +10,18 @@
  // TODO: get height from Terminal
 int Cursor::bottom()
 {
-  return cy = 25;
+  return cy = m_terminal.tyn;
 }
 
 int Cursor::leftmost()
 {
-  return cx = 1;
+  return cx = m_terminal.tx;
 }
 
 // TODO: get width from Terminal
 int Cursor::rightmost()
 {
-  return cx = 80;
+  return cx = m_terminal.txn;
 }
 
 // TODO: get bottom from Terminal
@@ -41,20 +41,26 @@ void Cursor::inspect()
 
 unsigned Cursor::ix()
 {
-  // if (cx - 1 <= 0)
-  // {
-  //   return 1;
-  // }
-  // else
-  // {
-  //   return cx - 1;
-  // }
-  return (unsigned)cx - 1;
+  if (cx - 1 < 1)
+  {
+    return 0;
+  }
+  else
+  {
+    return cx - 1;
+  }
 }
 
 unsigned Cursor::iy()
 {
-  return (unsigned)cy - 1;
+  if (cy - 1 < 1)
+  {
+    return 0;
+  }
+  else
+  {
+    return cy - 1;
+  }
 }
 
 int Cursor::left()
@@ -104,7 +110,7 @@ void Cursor::store()
 
 int Cursor::top()
 {
-  return cy = 1;
+  return cy = m_terminal.tx;
 }
 
 int Cursor::up()

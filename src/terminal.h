@@ -16,17 +16,17 @@ class Terminal
     }
 
     struct termios oldt, newt;
-    int tx;
-    int ty;
-    int txn;
-    int tyn;
+    unsigned tx;
+    unsigned ty;
+    unsigned txn;
+    unsigned tyn;
 
     void close();
-    int height();
+    unsigned height();
     void inspect();
     void open();
     void resize();
-    int width();
+    unsigned width();
 };
 
 #endif

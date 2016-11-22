@@ -31,7 +31,7 @@ void Terminal::close()
   tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
 }
 
-int Terminal::height()
+unsigned Terminal::height()
 {
   return tyn;
 }
@@ -61,7 +61,7 @@ void Terminal::resize()
   tyn = w.ws_row;
 }
 
-int Terminal::width()
+unsigned Terminal::width()
 {
   return txn;
 }
