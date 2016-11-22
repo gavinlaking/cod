@@ -44,7 +44,7 @@ int main(int argc, char** argv)
   while(keypress->handle())
   {
     buffer->clear();
-    buffer->inspect();
+    buffer->render();
   }
 
   delete keypress;
