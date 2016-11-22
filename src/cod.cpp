@@ -21,8 +21,10 @@ void handler(int sig)
   size = backtrace(array, 20); // get void*'s for all entries on the stack
 
   // print out all the frames to stderr
+  system("reset"); // reset the terminal
   fprintf(stderr, "Error: signal %d:\n", sig);
   backtrace_symbols_fd(array, size, STDERR_FILENO);
+
   exit(1);
 }
 
