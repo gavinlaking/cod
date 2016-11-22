@@ -104,9 +104,9 @@ void Buffer::remove_line(unsigned iy)
 void Buffer::remove_character()
 {
   std::vector<char> line = find_line();
-  line.erase(line.begin() + m_cursor.ix());
+  line.erase(line.begin() + m_cursor.ix() - 1);
   content.insert(content.begin() + m_cursor.iy(), line);
-  remove_line(m_cursor.iy());
+  remove_line(m_cursor.iy() + 1);
 
   m_cursor.left();
 }
