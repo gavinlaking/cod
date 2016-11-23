@@ -21,6 +21,12 @@ class Buffer
     void inspect();
     void insert_line(std::string str);
     void insert_character(char character);
+    void move_cursor_down();
+    void move_cursor_left();
+    void move_cursor_leftmost();
+    void move_cursor_right();
+    void move_cursor_rightmost();
+    void move_cursor_up();
     void read_file(std::string filename);
     void remove_line(unsigned iy);
     void remove_character();

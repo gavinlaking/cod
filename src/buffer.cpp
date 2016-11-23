@@ -48,17 +48,18 @@ void Buffer::inspect()
 
       std::cout << "  \e[32m]\e[39m" << std::endl;
     }
+
     std::cout << "\e[31m]\e[39m" << std::endl;
   }
-  //m_cursor.inspect();
 }
 
 void Buffer::insert_line(std::string str)
 {
   std::vector<char> line(str.begin(), str.end());
   content.push_back(line);
-  m_cursor.down();
-  m_cursor.leftmost();
+
+  move_cursor_down();
+  move_cursor_leftmost();
 }
 
 void Buffer::insert_character(char character)
@@ -68,7 +69,43 @@ void Buffer::insert_character(char character)
   content.insert(content.begin() + m_cursor.iy(), line);
   remove_line(m_cursor.iy() + 1);
 
+  move_cursor_right();
+}
+
+void Buffer::move_cursor_down()
+{
+  m_cursor.down();
+  m_cursor.render();
+}
+
+void Buffer::move_cursor_left()
+{
+  m_cursor.left();
+  m_cursor.render();
+}
+
+void Buffer::move_cursor_leftmost()
+{
+  m_cursor.leftmost();
+  m_cursor.render();
+}
+
+void Buffer::move_cursor_right()
+{
   m_cursor.right();
+  m_cursor.render();
+}
+
+void Buffer::move_cursor_rightmost()
+{
+  m_cursor.rightmost();
+  m_cursor.render();
+}
+
+void Buffer::move_cursor_up()
+{
+  m_cursor.up();
+  m_cursor.render();
 }
 
 void Buffer::read_file(std::string filename)
@@ -114,7 +151,8 @@ void Buffer::remove_character()
   if (line.empty())
   {
     remove_line(m_cursor.iy());
-    m_cursor.up();
+
+    move_cursor_up();
   }
   else
   {
@@ -122,7 +160,7 @@ void Buffer::remove_character()
     content.insert(content.begin() + m_cursor.iy(), line);
     remove_line(m_cursor.iy() + 1);
 
-    m_cursor.left();
+    move_cursor_left();
   }
 }
 
