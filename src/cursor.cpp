@@ -7,7 +7,6 @@
 #include "terminal.h"
 #include "cursor.h"
 
- // TODO: get height from Terminal
 int Cursor::bottom()
 {
   return cy = m_terminal.tyn;
@@ -18,7 +17,6 @@ int Cursor::leftmost()
   return cx = m_terminal.tx;
 }
 
-// TODO: get width from Terminal
 int Cursor::rightmost()
 {
   return cx = m_terminal.txn;
@@ -106,7 +104,6 @@ void Cursor::render()
   std::cout << "f"; // can be either 'f' or 'H'
 }
 
-// TODO: get width from Terminal
 int Cursor::right()
 {
   return cx++;
