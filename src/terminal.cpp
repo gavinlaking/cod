@@ -47,7 +47,7 @@ void Terminal::open()
 {
   tcgetattr(STDIN_FILENO, &oldt);
   newt = oldt;
-  newt.c_lflag &= ~(ICANON | ECHO);
+  newt.c_lflag &= ~(ICANON | IEXTEN);
   tcsetattr(STDIN_FILENO, TCSANOW, &newt);
 
   resize();

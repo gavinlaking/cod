@@ -1,6 +1,8 @@
 #include <iostream>
+#include <istream>
 #include <sys/ioctl.h>
 #include <stdio.h>
+#include <string.h>
 #include <termios.h>
 #include <unistd.h>
 #include <vector>
@@ -12,9 +14,39 @@
 
 bool Keypress::handle(void)
 {
-  key = getchar();
+  //key = getchar();
 
-  if (key == (char)10) // return
+  int length = 4;
+  char keypress[length];
+  std::cin.get(keypress, length, '\0');
+
+  if (strcmp(keypress, "\033[A") == 0) // up
+  {
+
+  }
+  if (strcmp(keypress, "\033[B") == 0) // down
+  {
+
+  }
+  if (strcmp(keypress, "\033[C") == 0) // right
+  {
+
+  }
+  if (strcmp(keypress, "\033[D") == 0) // left
+  {
+
+  }
+  if (strcmp(keypress, "\177") == 0) // backspace
+  {
+
+  }
+  if (strcmp(keypress, '\n') == 0) // enter
+  {
+    m_buffer.insert_line("");
+  }
+
+
+  if (keypress == "\n") // return
   {
     m_buffer.insert_line("");
   }
@@ -33,6 +65,9 @@ bool Keypress::handle(void)
   else
   {
   }
+
+
+
   return true;
 }
 
